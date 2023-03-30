@@ -1,4 +1,4 @@
-package api
+package endpoints
 
 import (
 	"encoding/json"
@@ -9,8 +9,7 @@ import (
 
 func GetOneDrug(w http.ResponseWriter, r *http.Request) {
 	DrugID := mux.Vars(r)["id"]
-	drugs := []model.Drug{}
-	for _, singleDrug := range drugs {
+	for _, singleDrug := range model.Drugs {
 		if singleDrug.DrugID == DrugID {
 			json.NewEncoder(w).Encode(singleDrug)
 		}

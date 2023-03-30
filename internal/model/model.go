@@ -1,9 +1,12 @@
 package model
 
 import (
+	"html/template"
 	"os"
 	"time"
 )
+
+var Templates *template.Template
 
 type Drug struct {
 	DrugID string `json:"drug-id"`
@@ -12,22 +15,40 @@ type Drug struct {
 	Price  string `json:"price"`
 }
 
-type Presc struct {
+var Prescs []CreatePrescInput
+
+type CreatePrescInput struct {
 	PreId      string    `json:"pre-id"`
-	DrugId     string    `json:"drug-id"`
+	Drugs      []string  `json:"drugs"`
 	Expiration time.Time `json:"expiration"`
 }
 
-type server struct {
-	prescs []Presc
-}
+var PreId string
+
+var Drugz []string
+
+var Expiration time.Time
+
+var Prescription CreatePrescInput
+
+var drugs []Drug
 
 type Port struct {
 	Port string
 }
 
+var Drugs []Drug
+
+type jwtUser struct {
+	Jwtuser     string "jwt-user"
+	Jwtpassword string "jwtpassword"
+}
+
+var Juser jwtUser
+
 type User struct {
-	UserID   string `json:"user-id"`
+	Name     string `json:"name"`
+	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
@@ -44,14 +65,3 @@ type Response struct {
 }
 
 var JwtKey = []byte(os.Getenv("JWT_KEY"))
-
-var Users = []User{
-	User{
-		UserID:   "user1",
-		Password: "password1",
-	},
-	User{
-		UserID:   "user2",
-		Password: "password2",
-	},
-}

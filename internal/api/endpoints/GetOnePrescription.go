@@ -1,4 +1,4 @@
-package api
+package endpoints
 
 import (
 	"encoding/json"
@@ -9,8 +9,7 @@ import (
 
 func GetOnePrescription(w http.ResponseWriter, r *http.Request) {
 	prescPreId := mux.Vars(r)["id"]
-	prescs := []model.Presc{}
-	for _, singlePresc := range prescs {
+	for _, singlePresc := range model.Prescs {
 		if singlePresc.PreId == prescPreId {
 			json.NewEncoder(w).Encode(singlePresc)
 		}

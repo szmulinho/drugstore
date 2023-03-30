@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="23e13192-e53d-4ef3-9e1f-a797b4997f94" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/.idea/cmd.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/AddDrug.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/AddDrug.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/AddPrescription.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/DeleteDrug.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/DeleteDrug.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/GetAllDrugs.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/GetAllDrugs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/GetAllPrescriptions.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/GetAllPrescriptions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/GetOneDrug.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/GetOneDrug.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/GetOnePrescription.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/GetOnePrescription.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/UpdateDrug.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/UpdateDrug.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/homelink.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/homelink.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/jwt/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/model.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../.." />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NQcvg18Jc2Fss8cCnm5EBNNMrk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Go Build.go build github.com/szmulinho/drugstore/cmd">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="drugstore" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/szmulinho/drugstore/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="drugstore" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/szmulinho/drugstore/cmd" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/cmd/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="drugstore" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html (1)" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:8081/">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:8081/">
+      <method v="2" />
+    </configuration>
+    <configuration name="fetch.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/fetch.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="js.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/internal/website/homelink/js.js" working-dir="$PROJECT_DIR$/internal/website/homelink">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/szmulinho/drugstore/cmd" />
+        <item itemvalue="Node.js.js.js" />
+        <item itemvalue="Node.js.fetch.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23e13192-e53d-4ef3-9e1f-a797b4997f94" name="Changes" comment="" />
+      <created>1679599980551</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679599980551</updated>
+      <workItem from="1679599982046" duration="208000" />
+      <workItem from="1679645270098" duration="1126000" />
+      <workItem from="1679646415931" duration="43000" />
+      <workItem from="1679646474564" duration="200000" />
+      <workItem from="1679655774380" duration="264000" />
+      <workItem from="1680003793858" duration="1146000" />
+      <workItem from="1680016042909" duration="4662000" />
+      <workItem from="1680022755461" duration="225000" />
+      <workItem from="1680023057029" duration="127000" />
+      <workItem from="1680023214740" duration="6743000" />
+      <workItem from="1680032547970" duration="909000" />
+      <workItem from="1680033482020" duration="235000" />
+      <workItem from="1680083381343" duration="2722000" />
+      <workItem from="1680086953234" duration="86000" />
+      <workItem from="1680087056408" duration="3007000" />
+      <workItem from="1680095919510" duration="2834000" />
+      <workItem from="1680098838450" duration="432000" />
+      <workItem from="1680099343215" duration="2352000" />
+      <workItem from="1680171581642" duration="2351000" />
+      <workItem from="1680174728119" duration="1928000" />
+      <workItem from="1680176730489" duration="549000" />
+      <workItem from="1680177566215" duration="111000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

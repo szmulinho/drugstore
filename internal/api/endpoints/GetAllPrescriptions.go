@@ -1,4 +1,4 @@
-package api
+package endpoints
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 )
 
 func GetAllPrescriptions(w http.ResponseWriter, r *http.Request) {
-	prescs := []model.Presc{}
-	json.NewEncoder(w).Encode(prescs)
+
+	json.NewEncoder(w).Encode(model.Prescs)
 
 }

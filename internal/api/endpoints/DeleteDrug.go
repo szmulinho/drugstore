@@ -1,4 +1,4 @@
-package api
+package endpoints
 
 import (
 	"fmt"
@@ -9,11 +9,10 @@ import (
 
 func DeleteDrug(w http.ResponseWriter, r *http.Request) {
 	DrugID := mux.Vars(r)["id"]
-	drugs := []model.Drug{}
 
-	for i, singleDrug := range drugs {
+	for i, singleDrug := range model.Drugs {
 		if singleDrug.DrugID == DrugID {
-			drugs = append(drugs[:i], drugs[i+1:]...)
+			model.Drugs = append(model.Drugs[:i], model.Drugs[i+1:]...)
 			fmt.Fprintf(w, "The drug with ID %v has been deleted successfully", DrugID)
 		}
 	}

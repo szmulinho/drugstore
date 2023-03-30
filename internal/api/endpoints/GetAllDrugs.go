@@ -1,4 +1,4 @@
-package api
+package endpoints
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 )
 
 func GetAllDrugs(w http.ResponseWriter, r *http.Request) {
-	drugs := []model.Drug{}
-	json.NewEncoder(w).Encode(drugs)
+	http.ServeFile(w, r, "C:\\Program Files\\Go\\src\\github.com\\szmulinho\\drugstore\\cmd\\server\\www\\getAllDrugs\\index.html")
+	json.NewEncoder(w).Encode(model.Drugs)
 
 }

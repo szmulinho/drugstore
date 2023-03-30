@@ -1,4 +1,4 @@
-package api
+package endpoints
 
 import (
 	"encoding/json"
@@ -14,7 +14,6 @@ type errResponse struct {
 
 func AddDrug(w http.ResponseWriter, r *http.Request) {
 	var newDrug model.Drug
-	drugs := []model.Drug{}
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		panic(err)
@@ -24,7 +23,7 @@ func AddDrug(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	for _, singleDrug := range drugs {
+	for _, singleDrug := range model.Drugs {
 		fmt.Println(singleDrug)
 		if singleDrug.DrugID == newDrug.DrugID {
 			w.WriteHeader(http.StatusConflict)
@@ -34,7 +33,7 @@ func AddDrug(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	drugs = append(drugs, newDrug)
+	model.Drugs = append(model.Drugs, newDrug)
 
 	fmt.Printf("added new drug %+v\n", newDrug)
 

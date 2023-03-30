@@ -11,11 +11,10 @@ import (
 )
 
 func CreateToken(w http.ResponseWriter, r *http.Request) {
-	var user model.User
-	_ = json.NewDecoder(r.Body).Decode(&user)
+	_ = json.NewDecoder(r.Body).Decode(&model.Juser)
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"username": user.UserID,
-		"password": user.Password,
+		"username": model.Juser.Jwtuser,
+		"password": model.Juser.Jwtpassword,
 		"exp":      time.Now().Add(time.Hour * time.Duration(1)).Unix(),
 	})
 	tokenString, error := token.SignedString(model.JwtKey)

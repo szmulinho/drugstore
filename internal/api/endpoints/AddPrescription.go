@@ -1,4 +1,4 @@
-package api
+package endpoints
 
 import (
 	"encoding/json"
@@ -9,32 +9,29 @@ import (
 )
 
 func AddPrescription(w http.ResponseWriter, r *http.Request) {
-	var newPresc model.Presc
-	prescs := []model.Presc{}
+
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		panic(err)
 	}
-	err = json.Unmarshal(reqBody, &newPresc)
+	err = json.Unmarshal(reqBody, &model.Prescription)
 	if err != nil {
 		panic(err)
 	}
 
-	for _, singlePresc := range prescs {
+	for _, singlePresc := range model.Prescs {
 		fmt.Println(singlePresc)
-		if singlePresc.PreId == newPresc.PreId {
+		if singlePresc.PreId == model.Prescription.PreId {
 			w.WriteHeader(http.StatusConflict)
-			json.NewEncoder(w).Encode(errResponse{Error: fmt.Sprintf("Prescription %s already exist", newPresc.PreId)})
+			json.NewEncoder(w).Encode(errResponse{Error: fmt.Sprintf("Prescription %s already exist", model.Prescription.PreId)})
 			return
 		}
-
 	}
+	model.Prescs = append(model.Prescs, model.Prescription)
 
-	prescs = append(prescs, newPresc)
-
-	fmt.Printf("created new task %+v\n", newPresc)
+	fmt.Printf("created new presciption %+v\n", model.Prescription)
 
 	w.WriteHeader(http.StatusCreated)
 
-	json.NewEncoder(w).Encode(newPresc)
+	json.NewEncoder(w).Encode(model.Prescription)
 }
