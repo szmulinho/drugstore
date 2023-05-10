@@ -1,37 +1,22 @@
 package model
 
 import (
-	"html/template"
 	"os"
-	"time"
 )
 
-var Templates *template.Template
-
 type Drug struct {
-	DrugID string `json:"drug-id"`
+	DrugID string `json:"drugid"`
 	Name   string `json:"name"`
-	Type   string `json:"type"`
 	Price  string `json:"price"`
 }
 
 var Prescs []CreatePrescInput
 
 type CreatePrescInput struct {
-	PreId      string    `json:"pre-id"`
-	Drugs      []string  `json:"drugs"`
-	Expiration time.Time `json:"expiration"`
+	PreId      string   `json:"preid"`
+	Drugs      []string `json:"drugs"`
+	Expiration string   `json:"expiration"`
 }
-
-var PreId string
-
-var Drugz []string
-
-var Expiration time.Time
-
-var Prescription CreatePrescInput
-
-var drugs []Drug
 
 type Port struct {
 	Port string
@@ -47,9 +32,9 @@ type jwtUser struct {
 var Juser jwtUser
 
 type User struct {
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	Password string `json:"password"`
+	UserID   string `gorm:"primaryKey;unique"`
+	Login    string `gorm:"unique"`
+	Password string
 }
 
 type JwtToken struct {
