@@ -13,9 +13,9 @@ type Drug struct {
 var Prescs []CreatePrescInput
 
 type CreatePrescInput struct {
-	PreId      string   `json:"preid"`
-	Drugs      []string `json:"drugs"`
-	Expiration string   `json:"expiration"`
+	PreId      string `json:"preid"`
+	Drugs      string `json:"drugs"`
+	Expiration string `json:"expiration"`
 }
 
 type Port struct {
@@ -32,7 +32,7 @@ type jwtUser struct {
 var Juser jwtUser
 
 type User struct {
-	UserID   string `gorm:"primaryKey;unique"`
+	ID       int64  `gorm:"primaryKey;autoIncrement"`
 	Login    string `gorm:"unique"`
 	Password string
 }

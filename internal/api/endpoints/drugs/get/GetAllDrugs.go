@@ -9,12 +9,12 @@ import (
 
 func GetAllDrugs(w http.ResponseWriter, r *http.Request) {
 
-	json.NewEncoder(w).Encode(model.Drugs)
-
-	result := database.DB.Where(&model.Drugs)
+	result := database.DB.Find(&model.Drugs)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
 		return
 	}
 
+	json.NewEncoder(w).Encode(model.Drugs)
 }
+

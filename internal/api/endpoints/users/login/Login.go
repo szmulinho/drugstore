@@ -2,44 +2,38 @@ package login
 
 import (
 	"encoding/json"
-	"github.com/golang-jwt/jwt"
 	"github.com/szmulinho/drugstore/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
-	"time"
 )
 
 func Login(w http.ResponseWriter, r *http.Request) {
+	var credentials struct {
+		Login    string `json:"login"`
+		Password string `json:"password"`
+	}
 
-	var user model.User
-	err := json.NewDecoder(r.Body).Decode(&user)
+	err := json.NewDecoder(r.Body).Decode(&credentials)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	db := database.DB
-	var userFromDB model.User
-	result := db.Where("login = ?", user.Login).First(&userFromDB)
+	var user model.User
+	result := database.DB.Where("login = ?", credentials.Login).First(&user)
 	if result.Error != nil {
-		http.Error(w, "Invalid username", http.StatusUnauthorized)
+		http.Error(w, "Invalid login or password", http.StatusUnauthorized)
 		return
 	}
-	hashPasswordFromDatabase := userFromDB.Password
 
-	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(hashPasswordFromDatabase))
-
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(credentials.Password))
 	if err != nil {
-		http.Error(w, "Invalid password", http.StatusUnauthorized)
+		http.Error(w, "Invalid login or password", http.StatusUnauthorized)
 		return
 	}
 
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"login": user.Login,
-		"exp":   time.Now().Add(time.Hour * time.Duration(1)).Unix(),
-	})
-	tokenString, err := token.SignedString(model.JwtKey)
+	userJSON, err := json.Marshal(user)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -47,5 +41,5 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(model.JwtToken{Token: tokenString})
+	w.Write(userJSON)
 }

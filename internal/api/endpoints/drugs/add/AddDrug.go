@@ -14,6 +14,7 @@ type errResponse struct {
 }
 
 func AddDrug(w http.ResponseWriter, r *http.Request) {
+
 	var newDrug model.Drug
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
