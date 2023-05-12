@@ -1,11 +1,11 @@
 package add
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"github.com/szmulinho/drugstore/database"
 	"github.com/szmulinho/drugstore/internal/model"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -14,15 +14,21 @@ type errResponse struct {
 }
 
 func AddDrug(w http.ResponseWriter, r *http.Request) {
-
 	var newDrug model.Drug
-	reqBody, err := ioutil.ReadAll(r.Body)
+
+	r.Body = http.MaxBytesReader(w, r.Body, 1048576)
+
+	buf := new(bytes.Buffer)
+	_, err := buf.ReadFrom(r.Body)
 	if err != nil {
-		panic(err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
-	err = json.Unmarshal(reqBody, &newDrug)
+
+	err = json.Unmarshal(buf.Bytes(), &newDrug)
 	if err != nil {
-		panic(err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	result := database.DB.Create(&newDrug)
@@ -38,7 +44,6 @@ func AddDrug(w http.ResponseWriter, r *http.Request) {
 			json.NewEncoder(w).Encode(errResponse{Error: fmt.Sprintf("Drug %s already exist", newDrug.DrugID)})
 			return
 		}
-
 	}
 
 	model.Drugs = append(model.Drugs, newDrug)

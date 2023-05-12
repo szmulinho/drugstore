@@ -5,7 +5,7 @@ import (
 )
 
 type Drug struct {
-	DrugID string `json:"drugid"`
+	DrugID int64  `json:"drugid" gorm:"primaryKey;autoIncrement"`
 	Name   string `json:"name"`
 	Price  string `json:"price"`
 }
@@ -13,7 +13,7 @@ type Drug struct {
 var Prescs []CreatePrescInput
 
 type CreatePrescInput struct {
-	PreId      string `json:"preid"`
+	PreId      int64  `json:"preid"`
 	Drugs      string `json:"drugs"`
 	Expiration string `json:"expiration"`
 }

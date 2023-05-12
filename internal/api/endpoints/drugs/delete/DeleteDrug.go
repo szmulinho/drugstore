@@ -5,10 +5,16 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/szmulinho/drugstore/internal/model"
 	"net/http"
+	"strconv"
 )
 
 func DeleteDrug(w http.ResponseWriter, r *http.Request) {
-	DrugID := mux.Vars(r)["id"]
+	drugIDStr := mux.Vars(r)["id"]
+	DrugID, err := strconv.ParseInt(drugIDStr, 10, 64)
+	if err != nil {
+		http.Error(w, "Invalid drug ID", http.StatusBadRequest)
+		return
+	}
 
 	for i, singleDrug := range model.Drugs {
 		if singleDrug.DrugID == DrugID {

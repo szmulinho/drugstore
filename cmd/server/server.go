@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"github.com/szmulinho/drugstore/internal/api/endpoints"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/add"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/delete"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/get"
@@ -25,8 +24,6 @@ func Run() {
 	router.HandleFunc("/drugs/{id}", get.GetOneDrug).Methods("GET")
 	router.HandleFunc("/drugs/{id}", update.UpdateDrug).Methods("PATCH")
 	router.HandleFunc("/drugs/{id}", delete.DeleteDrug).Methods("DELETE")
-	router.HandleFunc("/prescs", (endpoints.GetAllPrescriptions)).Methods("GET")
-	router.HandleFunc("/presc/{id}", endpoints.GetOnePrescription).Methods("GET")
 	router.HandleFunc("/authenticate", jwt.CreateToken).Methods("POST")
 	router.HandleFunc("/register", register.CreateUser).Methods("POST")
 	router.HandleFunc("/login", login.Login).Methods("POST")
