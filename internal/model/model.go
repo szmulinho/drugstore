@@ -13,9 +13,9 @@ type Drug struct {
 var Prescs []CreatePrescInput
 
 type CreatePrescInput struct {
-	PreId      int64  `json:"preid"`
-	Drugs      string `json:"drugs"`
-	Expiration string `json:"expiration"`
+	PreId      int64    `json:"preid"`
+	Drugs      []string `json:"drugs"`
+	Expiration string   `json:"expiration"`
 }
 
 type Port struct {

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/szmulinho/drugstore/database"
+	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"net/http"
 )

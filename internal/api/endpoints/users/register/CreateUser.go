@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/szmulinho/drugstore/database"
+	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"golang.org/x/crypto/bcrypt"
 )

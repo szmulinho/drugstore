@@ -2,7 +2,7 @@ package get
 
 import (
 	"encoding/json"
-	"github.com/szmulinho/drugstore/database"
+	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"net/http"
 )
@@ -17,4 +17,3 @@ func GetAllDrugs(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(model.Drugs)
 }
-

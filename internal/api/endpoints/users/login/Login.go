@@ -2,7 +2,7 @@ package login
 
 import (
 	"encoding/json"
-	"github.com/szmulinho/drugstore/database"
+	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
