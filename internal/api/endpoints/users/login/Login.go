@@ -2,6 +2,7 @@ package login
 
 import (
 	"encoding/json"
+	"github.com/szmulinho/drugstore/internal/api/jwt"
 	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"golang.org/x/crypto/bcrypt"
@@ -33,7 +34,24 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userJSON, err := json.Marshal(user)
+	var isCustomer bool
+
+	if user.Role == "customer" {
+		isCustomer = true
+	}
+
+	token, err := jwt.CreateToken(w, r, user.ID, isCustomer)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	response := model.LoginResponse{
+		User:  user,
+		Token: token,
+	}
+
+	responseJSON, err := json.Marshal(response)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -41,5 +59,5 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	w.Write(userJSON)
+	w.Write(responseJSON)
 }

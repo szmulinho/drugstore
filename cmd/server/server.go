@@ -8,8 +8,10 @@ import (
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/delete"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/get"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/update"
+	"github.com/szmulinho/drugstore/internal/api/endpoints/users/getUsers"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/users/login"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/users/register"
+	"github.com/szmulinho/drugstore/internal/api/endpoints/users/userData"
 	"github.com/szmulinho/drugstore/internal/api/jwt"
 	"log"
 	"net/http"
@@ -24,9 +26,20 @@ func Run() {
 	router.HandleFunc("/drugs/{id}", get.GetOneDrug).Methods("GET")
 	router.HandleFunc("/drugs/{id}", update.UpdateDrug).Methods("PATCH")
 	router.HandleFunc("/drugs/{id}", delete.DeleteDrug).Methods("DELETE")
-	router.HandleFunc("/authenticate", jwt.CreateToken).Methods("POST")
+	router.HandleFunc("/authenticate", func(w http.ResponseWriter, r *http.Request) {
+		userID := uint(1)
+		isDoctor := true
+		token, err := jwt.CreateToken(w, r, int64(userID), isDoctor)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		w.Write([]byte(token))
+	}).Methods("POST")
 	router.HandleFunc("/register", register.CreateUser).Methods("POST")
 	router.HandleFunc("/login", login.Login).Methods("POST")
+	router.HandleFunc("/user", userData.GetUserDataHandler).Methods("GET")
+	router.HandleFunc("/users", getUsers.GetAllUsers).Methods("GET")
 	cors := handlers.CORS(
 		handlers.AllowedOrigins([]string{"*"}),
 		handlers.AllowedMethods([]string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"}),
@@ -36,6 +49,7 @@ func Run() {
 		handlers.MaxAge(86400),
 	)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", "8081"), cors(router)))
+
 }
 
 func Server() {

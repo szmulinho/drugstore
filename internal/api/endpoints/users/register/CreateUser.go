@@ -25,6 +25,9 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	newUser.Password = string(hashedPassword)
+
+	newUser.Role = "customer"
+
 	result := database.DB.Create(&newUser)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)

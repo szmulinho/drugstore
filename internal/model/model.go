@@ -33,9 +33,12 @@ var Juser jwtUser
 
 type User struct {
 	ID       int64  `gorm:"primaryKey;autoIncrement"`
-	Login    string `gorm:"unique"`
-	Password string
+	Login    string `gorm:"unique" json:"login"`
+	Password string `json:"password"`
+	Role     string `json:"role"`
 }
+
+var Users []User
 
 type JwtToken struct {
 	Token string `json:"token"`
@@ -50,3 +53,8 @@ type Response struct {
 }
 
 var JwtKey = []byte(os.Getenv("JWT_KEY"))
+
+type LoginResponse struct {
+	User  User   `json:"user"`
+	Token string `json:"token"`
+}
