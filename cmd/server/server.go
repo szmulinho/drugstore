@@ -8,10 +8,6 @@ import (
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/delete"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/get"
 	"github.com/szmulinho/drugstore/internal/api/endpoints/drugs/update"
-	"github.com/szmulinho/drugstore/internal/api/endpoints/users/getUsers"
-	"github.com/szmulinho/drugstore/internal/api/endpoints/users/login"
-	"github.com/szmulinho/drugstore/internal/api/endpoints/users/register"
-	"github.com/szmulinho/drugstore/internal/api/endpoints/users/userData"
 	"github.com/szmulinho/drugstore/internal/api/jwt"
 	"log"
 	"net/http"
@@ -36,10 +32,6 @@ func Run() {
 		}
 		w.Write([]byte(token))
 	}).Methods("POST")
-	router.HandleFunc("/register", register.CreateUser).Methods("POST")
-	router.HandleFunc("/login", login.Login).Methods("POST")
-	router.HandleFunc("/user", userData.GetUserDataHandler).Methods("GET")
-	router.HandleFunc("/users", getUsers.GetAllUsers).Methods("GET")
 	cors := handlers.CORS(
 		handlers.AllowedOrigins([]string{"*"}),
 		handlers.AllowedMethods([]string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"}),

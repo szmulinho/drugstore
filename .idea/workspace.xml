@@ -5,20 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42289ee7-b6c0-4c3b-b561-5e994fc360ed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/server/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/AddPrescription.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/AddPrescription.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/GetAllDrugs.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/GetAllDrugs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/GetAllPrescriptions.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/GetAllPrescriptions.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/GetOnePrescription.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/GetOnePrescription.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/UpdateDrug.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/UpdateDrug.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/homelink.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/endpoints/homelink.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/model.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/modules.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/users/getUsers/GetAllUsers.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/users/login/Login.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/users/register/CreateUser.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/users/userData/GetUserData.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/database/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/database/connection.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/szmulmed.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,24 +40,24 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Pulpit" />
@@ -102,24 +97,28 @@
       <workItem from="1680689346873" duration="270000" />
       <workItem from="1680699382103" duration="1447000" />
       <workItem from="1682001770229" duration="736000" />
+      <workItem from="1696329902191" duration="55000" />
+      <workItem from="1696336693789" duration="157000" />
+      <workItem from="1696337611343" duration="16000" />
+      <workItem from="1696337651972" duration="295000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/cmd/main.go</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
