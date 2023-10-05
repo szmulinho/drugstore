@@ -5,9 +5,9 @@ import (
 )
 
 type Drug struct {
-	DrugID int64  `json:"drugid" gorm:"primaryKey;autoIncrement"`
+	DrugID int64  `json:"drug_id" gorm:"primaryKey;autoIncrement"`
 	Name   string `json:"name"`
-	Price  string `json:"price"`
+	Price  int64  `json:"price"`
 }
 
 var Prescs []CreatePrescInput

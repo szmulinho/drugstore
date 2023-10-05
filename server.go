@@ -1,4 +1,4 @@
-package server
+package main
 
 import (
 	"fmt"
@@ -20,6 +20,7 @@ func Run() {
 	router.HandleFunc("/drug", add.AddDrug).Methods("POST")
 	router.HandleFunc("/drugs", get.GetAllDrugs).Methods("GET")
 	router.HandleFunc("/drugs/{id}", get.GetOneDrug).Methods("GET")
+	router.HandleFunc("/drugs/{name}", get.GetDrugByName).Methods("GET")
 	router.HandleFunc("/drugs/{id}", update.UpdateDrug).Methods("PATCH")
 	router.HandleFunc("/drugs/{id}", delete.DeleteDrug).Methods("DELETE")
 	router.HandleFunc("/authenticate", func(w http.ResponseWriter, r *http.Request) {

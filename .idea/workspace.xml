@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42289ee7-b6c0-4c3b-b561-5e994fc360ed" name="Changes" comment="">
+    <list default="true" id="42289ee7-b6c0-4c3b-b561-5e994fc360ed" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/users/getUsers/GetAllUsers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/users/login/Login.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/users/register/CreateUser.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/endpoints/users/userData/GetUserData.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/database/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/database/connection.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szmulmed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/model.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +95,17 @@
       <workItem from="1696336693789" duration="157000" />
       <workItem from="1696337611343" duration="16000" />
       <workItem from="1696337651972" duration="295000" />
+      <workItem from="1696337969928" duration="180000" />
+      <workItem from="1696445219741" duration="54000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1696338108206</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696338108206</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +121,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

@@ -2,8 +2,8 @@ package update
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"io/ioutil"
 	"net/http"
@@ -17,19 +17,35 @@ func UpdateDrug(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid drug ID", http.StatusBadRequest)
 		return
 	}
+
 	var updatedDrug model.Drug
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		fmt.Fprintf(w, "Kindly enter data with the task title and description only in order to update")
+		http.Error(w, "Kindly enter data with the drug name and price only in order to update", http.StatusBadRequest)
+		return
 	}
-	json.Unmarshal(reqBody, &updatedDrug)
 
-	for i, singleDrug := range model.Drugs {
-		if singleDrug.DrugID == DrugID {
-			singleDrug.Name = updatedDrug.Name
-			singleDrug.Price = updatedDrug.Price
-			model.Drugs = append(model.Drugs[:i], singleDrug)
-			json.NewEncoder(w).Encode(singleDrug)
-		}
+	err = json.Unmarshal(reqBody, &updatedDrug)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
+
+	var existingDrug model.Drug
+	result := database.DB.First(&existingDrug, DrugID)
+	if result.Error != nil {
+		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	existingDrug.Name = updatedDrug.Name
+	existingDrug.Price = updatedDrug.Price
+
+	result = database.DB.Save(&existingDrug)
+	if result.Error != nil {
+		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	json.NewEncoder(w).Encode(existingDrug)
 }

@@ -3,6 +3,7 @@ package delete
 import (
 	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"net/http"
 	"strconv"
@@ -16,10 +17,18 @@ func DeleteDrug(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	for i, singleDrug := range model.Drugs {
-		if singleDrug.DrugID == DrugID {
-			model.Drugs = append(model.Drugs[:i], model.Drugs[i+1:]...)
-			fmt.Fprintf(w, "The drug with ID %v has been deleted successfully", DrugID)
-		}
+	var existingDrug model.Drug
+	result := database.DB.First(&existingDrug, DrugID)
+	if result.Error != nil {
+		http.Error(w, "Drug not found", http.StatusNotFound)
+		return
 	}
+
+	result = database.DB.Delete(&existingDrug)
+	if result.Error != nil {
+		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	fmt.Fprintf(w, "The drug with ID %v has been deleted successfully", DrugID)
 }
