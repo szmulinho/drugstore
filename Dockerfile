@@ -5,13 +5,13 @@ COPY . .
 
 RUN apk add --no-cache git
 RUN go mod download
-RUN CGO_ENABLED=0 GOOS=linux go build -o app
+RUN CGO_ENABLED=0 GOOS=linux go build -o drugstore
 
 FROM alpine:latest
 
-WORKDIR /app
-COPY --from=build /drugsotre/app /drugstore/app
+WORKDIR /drugstore
+COPY --from=build /drugstore/drugstore /drugstore/drugstore
 
 EXPOSE 8091
 
-CMD ["./app"]
+CMD ["./drugstore"]
