@@ -1,10 +1,9 @@
-package add
+package endpoints
 
 import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"net/http"
 )
@@ -13,7 +12,7 @@ type errResponse struct {
 	Error string `json:"error"`
 }
 
-func AddDrug(w http.ResponseWriter, r *http.Request) {
+func (h *handlers) AddDrug(w http.ResponseWriter, r *http.Request) {
 	var newDrug model.Drug
 
 	r.Body = http.MaxBytesReader(w, r.Body, 1048576)
@@ -31,7 +30,7 @@ func AddDrug(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	result := database.DB.Create(&newDrug)
+	result := h.db.Create(&newDrug)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
 		return

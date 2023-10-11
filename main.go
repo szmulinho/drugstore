@@ -1,11 +1,25 @@
 package main
 
 import (
-	"github.com/szmulinho/drugstore/internal/database"
+	"fmt"
+	"github.com/szmulinho/common/database"
+	"github.com/szmulinho/common/utils"
+	"github.com/szmulinho/drugstore/internal/server"
+	"log"
 )
 
 func main() {
-	database.Connect()
+	fmt.Println("Starting the application...")
+	defer fmt.Println("Closing the application...")
 
-	Run()
+	db, err := database.Connect()
+	if err != nil {
+		log.Fatalf("connetcting to database: %v", err)
+	}
+
+	ctx, _, wait := utils.Gracefully()
+
+	server.Run(ctx, db)
+
+	wait()
 }

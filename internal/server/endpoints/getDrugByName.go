@@ -1,4 +1,4 @@
-package get
+package endpoints
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func GetDrugByName(w http.ResponseWriter, r *http.Request) {
+func (h *handlers) GetDrugByName(w http.ResponseWriter, r *http.Request) {
 	drugName := mux.Vars(r)["name"]
 	var foundDrugs []model.Drug
 

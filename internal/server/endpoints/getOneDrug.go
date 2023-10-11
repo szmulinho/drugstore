@@ -1,4 +1,4 @@
-package get
+package endpoints
 
 import (
 	"encoding/json"
@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func GetOneDrug(w http.ResponseWriter, r *http.Request) {
+func (h *handlers) GetOneDrug(w http.ResponseWriter, r *http.Request) {
 	drugIDStr := mux.Vars(r)["id"]
 	DrugID, err := strconv.ParseInt(drugIDStr, 10, 64)
 	if err != nil {

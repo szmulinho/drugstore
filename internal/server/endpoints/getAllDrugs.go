@@ -1,15 +1,14 @@
-package get
+package endpoints
 
 import (
 	"encoding/json"
-	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"net/http"
 )
 
-func GetAllDrugs(w http.ResponseWriter, r *http.Request) {
+func (h *handlers) GetAllDrugs(w http.ResponseWriter, r *http.Request) {
 
-	result := database.DB.Find(&model.Drugs)
+	result := h.db.Find(&model.Drugs)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
 		return

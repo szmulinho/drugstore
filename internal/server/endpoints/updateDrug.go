@@ -1,16 +1,15 @@
-package update
+package endpoints
 
 import (
 	"encoding/json"
 	"github.com/gorilla/mux"
-	"github.com/szmulinho/drugstore/internal/database"
 	"github.com/szmulinho/drugstore/internal/model"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 )
 
-func UpdateDrug(w http.ResponseWriter, r *http.Request) {
+func (h *handlers) UpdateDrug(w http.ResponseWriter, r *http.Request) {
 	drugIDStr := mux.Vars(r)["id"]
 	DrugID, err := strconv.ParseInt(drugIDStr, 10, 64)
 	if err != nil {
@@ -32,7 +31,7 @@ func UpdateDrug(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var existingDrug model.Drug
-	result := database.DB.First(&existingDrug, DrugID)
+	result := h.db.First(&existingDrug, DrugID)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
 		return
@@ -41,7 +40,7 @@ func UpdateDrug(w http.ResponseWriter, r *http.Request) {
 	existingDrug.Name = updatedDrug.Name
 	existingDrug.Price = updatedDrug.Price
 
-	result = database.DB.Save(&existingDrug)
+	result = h.db.Save(&existingDrug)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
 		return
