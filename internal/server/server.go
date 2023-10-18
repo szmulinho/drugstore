@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/szmulinho/drugstore/internal/server/endpoints"
@@ -39,7 +40,8 @@ func Run(ctx context.Context, db *gorm.DB) {
 		handlers.MaxAge(86400),
 	)
 	go func() {
-		err := http.ListenAndServeTLS(":443", "cert.pem", "key.pem", cors(router))
+		err := http.ListenAndServe(fmt.Sprintf(":%s", "8081"), cors(router))
+
 		if err != nil {
 			log.Fatal(err)
 		}

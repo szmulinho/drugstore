@@ -12,9 +12,6 @@ FROM alpine:latest
 WORKDIR /drugstore
 COPY --from=build /drugstore/drugstore /drugstore/drugstore
 
-COPY cert.pem /drugstore/cert.pem
-COPY key.pem /drugstore/key.pem
+EXPOSE 8081
 
-EXPOSE 443
-
-CMD ["./drugstore", "-cert", "/drugstore/cert.pem", "-key", "/drugstore/key.pem", "-addr", ":443"]
+CMD ["./drugstore"]
