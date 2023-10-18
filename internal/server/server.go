@@ -40,7 +40,7 @@ func Run(ctx context.Context, db *gorm.DB) {
 		handlers.MaxAge(86400),
 	)
 	go func() {
-		err := http.ListenAndServe(fmt.Sprintf(":%s", "8081"), cors(router))
+		err := http.ListenAndServe(fmt.Sprintf(":%s", "https://szmul-med-drugstore.onrender.com/"), cors(router))
 
 		if err != nil {
 			log.Fatal(err)
