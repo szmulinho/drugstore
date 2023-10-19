@@ -39,7 +39,7 @@ func Run(ctx context.Context, db *gorm.DB) {
 		handlers.MaxAge(86400),
 	)
 	go func() {
-		err := http.ListenAndServe(":8080", cors(router))
+		err := http.ListenAndServe(":8081", cors(router))
 		if err != nil {
 			log.Fatal(err)
 		}
