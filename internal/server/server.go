@@ -39,12 +39,11 @@ func Run(ctx context.Context, db *gorm.DB) {
 		handlers.MaxAge(86400),
 	)
 	go func() {
-		err := http.ListenAndServe("https://3.75.158.163:8081", cors(router))
+		err := http.ListenAndServe(":443", cors(router))
 		if err != nil {
 			log.Fatal(err)
 		}
 	}()
 
 	<-ctx.Done()
-
 }
