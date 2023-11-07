@@ -5,10 +5,11 @@ import (
 )
 
 type Drug struct {
-	DrugID int64  `json:"drug_id" gorm:"primaryKey;autoIncrement"`
-	Name   string `json:"name"`
-	Image  string `json:"image"`
-	Price  int64  `json:"price"`
+	DrugID      int64  `json:"drug_id" gorm:"primaryKey;autoIncrement"`
+	Name        string `json:"name"`
+	Image       string `json:"image"`
+	Price       int64  `json:"price"`
+	Description string `json:"description"`
 }
 
 var Drugs []Drug
