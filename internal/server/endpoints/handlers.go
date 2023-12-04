@@ -9,11 +9,9 @@ type Handlers interface {
 	AddDrug(w http.ResponseWriter, r *http.Request)
 	CreateToken(w http.ResponseWriter, r *http.Request, userID int64, isCustomer bool) (string, error)
 	DeleteDrug(w http.ResponseWriter, r *http.Request)
-	GetAllDrugs(w http.ResponseWriter, r *http.Request)
 	GetDrugByName(w http.ResponseWriter, r *http.Request)
 	GetOneDrug(w http.ResponseWriter, r *http.Request)
 	UpdateDrug(w http.ResponseWriter, r *http.Request)
-	ValidateMiddleware(next http.HandlerFunc) http.HandlerFunc
 }
 
 type handlers struct {

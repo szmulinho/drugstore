@@ -15,7 +15,6 @@ func Run(ctx context.Context, db *gorm.DB) {
 	router := mux.NewRouter().StrictSlash(true)
 	router.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	router.HandleFunc("/drug", handler.AddDrug).Methods("POST")
-	router.HandleFunc("/drugs", handler.GetAllDrugs).Methods("GET")
 	router.HandleFunc("/drugs/{id}", handler.GetOneDrug).Methods("GET")
 	router.HandleFunc("/drugs/{name}", handler.GetDrugByName).Methods("GET")
 	router.HandleFunc("/drugs/{id}", handler.UpdateDrug).Methods("PATCH")
