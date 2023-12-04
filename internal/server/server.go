@@ -18,6 +18,7 @@ func Run(ctx context.Context, db *gorm.DB) {
 	router.HandleFunc("/drugs/{id}", handler.GetOneDrug).Methods("GET")
 	router.HandleFunc("/drugs/{name}", handler.GetDrugByName).Methods("GET")
 	router.HandleFunc("/drugs/{id}", handler.UpdateDrug).Methods("PATCH")
+	router.HandleFunc("/drugs", handler.GetAllDrugs).Methods("GET")
 	router.HandleFunc("/drugs/{id}", handler.DeleteDrug).Methods("DELETE")
 	router.HandleFunc("/authenticate", func(w http.ResponseWriter, r *http.Request) {
 		userID := uint(1)

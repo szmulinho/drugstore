@@ -12,6 +12,7 @@ type Handlers interface {
 	GetDrugByName(w http.ResponseWriter, r *http.Request)
 	GetOneDrug(w http.ResponseWriter, r *http.Request)
 	UpdateDrug(w http.ResponseWriter, r *http.Request)
+	GetAllDrugs(w http.ResponseWriter, r *http.Request)
 }
 
 type handlers struct {
