@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-type errResponse struct {
-	Error string `json:"error"`
-}
-
 func (h *handlers) AddDrug(w http.ResponseWriter, r *http.Request) {
 	var newDrug model.Drug
 
@@ -20,19 +16,19 @@ func (h *handlers) AddDrug(w http.ResponseWriter, r *http.Request) {
 	buf := new(bytes.Buffer)
 	_, err := buf.ReadFrom(r.Body)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, fmt.Sprintf("failed to read request body: %s", err), http.StatusInternalServerError)
 		return
 	}
 
 	err = json.Unmarshal(buf.Bytes(), &newDrug)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, fmt.Sprintf("failed to unmarshal JSON: %s", err), http.StatusBadRequest)
 		return
 	}
 
 	result := h.db.Create(&newDrug)
 	if result.Error != nil {
-		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
+		http.Error(w, fmt.Sprintf("failed to create new drug in the database: %s", result.Error), http.StatusInternalServerError)
 		return
 	}
 
@@ -40,7 +36,10 @@ func (h *handlers) AddDrug(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(singleDrug)
 		if singleDrug.DrugID == newDrug.DrugID {
 			w.WriteHeader(http.StatusConflict)
-			json.NewEncoder(w).Encode(errResponse{Error: fmt.Sprintf("Drug %s already exist", newDrug.DrugID)})
+			errorMsg := fmt.Sprintf("Drug %v already exists", newDrug.DrugID)
+			if _, err := w.Write([]byte(errorMsg)); err != nil {
+				http.Error(w, fmt.Sprintf("failed to write response: %s", err), http.StatusInternalServerError)
+			}
 			return
 		}
 	}
@@ -51,5 +50,7 @@ func (h *handlers) AddDrug(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusCreated)
 
-	json.NewEncoder(w).Encode(newDrug)
+	if err := json.NewEncoder(w).Encode(newDrug); err != nil {
+		http.Error(w, fmt.Sprintf("failed to encode response JSON: %s", err), http.StatusInternalServerError)
+	}
 }
